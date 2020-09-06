@@ -1,0 +1,11 @@
+{
+  "name": "chair-reminder",
+  "version": "1.0.0",
+  "description": "Mi primer bot de Discord, te recuerda sentarte bien cada 5 min.",
+  "main": "bot.js",
+  "author": "Kronoguild",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "winston": "^3.3.3"
+  }
+}

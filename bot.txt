@@ -1,0 +1,5 @@
+token
+NzUyMTgyNzU0OTgwMDAzOTkx.X1T6xw.Qy87P_7yl49_M-USuY_1nEvqju8
+
+https://discordapp.com/oauth2/authorize?&client_id=752182754980003991&scope=bot&permissions=1177623616
+
