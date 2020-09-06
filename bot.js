@@ -28,10 +28,12 @@ logger.info('Connected');
 logger.info('Logged in as: ');
 logger.info(bot.username + ' – (' + bot.id + ')');
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
+bot.on('message', function (channelID, message) {
 // Nuestro bot necesita saber si ejecutará un
 // Escuchará los mensajes que empiecen con '¡'
-if (message == 'set chair reminder') {
+logger.info('Pre IF');
+if (message.content === 'set chair reminder') {
+logger.info('Post IF');
 reminderFlag = !reminderFlag;
 abc = chairFunction();
 //var args = message.substring(1).split(' ');
@@ -45,39 +47,21 @@ abc = chairFunction();
 
 
 function chairFunction() {
+	logger.info('IN Function');
 	
-	bot.sendMessage({
-to: channelID,
-message: 'Ok.'
-});
+	message.reply(Ok.)
 	
     if (reminderFlag == true) {
-		bot.sendMessage({
-to: channelID,
-message: 'Starting.'
-});
-		var task = cron.schedule("0 5 * * * *", () => {
-  switch(cmd) {
-// !ping
-case 'ping':
-bot.sendMessage({
-to: channelID,
-message: '/tts sentate bien mostro'
-});
-break;
-// Agrega cualquier comando si lo deseas
-}
-});
+		message.reply(Starting.)
+		var task = cron.schedule("0 0/5 * * * ? *", () => {
+
+message.reply(/tts sentate bien mostro
 		
    }
    
 if (reminderFlag == false) {
 	task.stop();
-	bot.sendMessage({
-to: channelID,
-message: 'Stopped.'
-});
-}
+	message.reply(Stopped.)
 
 return 1;
 
