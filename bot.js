@@ -28,6 +28,7 @@ bot.on('ready', function (evt) {
 logger.info('Connected');
 logger.info('Logged in as: ');
 logger.info(bot.username + ' – (' + bot.id + ')');
+bot.user.setActivity("Ancestors: The Humankind Odyssey", { type: "PLAYING"})
 });
 bot.on('message', message => {
 // Nuestro bot necesita saber si ejecutará un
