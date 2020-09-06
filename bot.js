@@ -31,8 +31,6 @@ logger.info(bot.username + ' – (' + bot.id + ')');
 bot.on('message', message => {
 // Nuestro bot necesita saber si ejecutará un
 // Escuchará los mensajes que empiecen con '¡'
-logger.info('Pre IF');
-console.log(message.content);
 if (message.content === 'set chair reminder') {
 logger.info('Post IF');
 reminderFlag = !reminderFlag;
@@ -54,9 +52,11 @@ function chairFunction(message) {
 	
     if (reminderFlag == true) {
 		message.channel.send('Starting.');
-		var task = cron.schedule("0 0/5 * * *", () => {
+		var task = cron.schedule("*/5 * * * *", () => {
 
-message.channel.send('tts sentate bien mostro');
+message.channel.send('sentate bien mostro' , {
+ tts: true
+});
 
 		
 		})
