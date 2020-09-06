@@ -6,6 +6,7 @@
   "author": "Kronoguild",
   "dependencies": {
     "discord.io": "^2.5.3",
+    "node-cron": "^2.0.3",
     "winston": "^3.3.3"
   }
 }

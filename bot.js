@@ -33,7 +33,7 @@ abc = chairFunction();
 }
 
 
-)
+});
 
 
 function chairFunction() {
@@ -60,6 +60,3 @@ if (reminderFlag == false) {
 return 1;
 
 }
-
-
-;
