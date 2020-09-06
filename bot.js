@@ -11,7 +11,7 @@ let a = 0;
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
-colorize: true
+	colorize: true
 });
 logger.level = 'debug';
 // Initialize Discord Bot
@@ -26,46 +26,46 @@ bot.login(auth.Token);
 
 
 bot.on('ready', function (evt) {
-logger.info('Connected');
-logger.info('Logged in as: ');
-logger.info(bot.username + ' – (' + bot.id + ')');
-bot.user.setActivity("Ancestors: The Humankind Odyssey", { type: "PLAYING"})
+	logger.info('Connected');
+	logger.info('Logged in as: ');
+	logger.info(bot.username + ' – (' + bot.id + ')');
+	bot.user.setActivity("Ancestors: The Humankind Odyssey", { type: "PLAYING" })
 
 
 });
 bot.on('message', message => {
-// Nuestro bot necesita saber si ejecutará un
-// Escuchará los mensajes que empiecen con '¡'
+	// Nuestro bot necesita saber si ejecutará un
+	// Escuchará los mensajes que empiecen con '¡'
 
 
-guild = message.guild.id;
+	guild = message.guild.id;
 
 
-try {
-	const fs = require('fs')
-	
-	
-  const data = fs.readFileSync('servers/'+ guild +'.txt', 'utf8')
-  console.log(data)
-  var channel = data;
-  
-  a = cronSend(client.channels.get(data));
-  
-} catch (err) {
-	
+	try {
+		const fs = require('fs')
 
-}
 
-if (message.content === 'set chair reminder') {
-logger.info('Post IF');
-reminderFlag = !reminderFlag;
-console.log(message.channel.id);
-abc = chairFunction(message);
-//var args = message.substring(1).split(' ');
-//var cmd = args[0];
-//args = args.splice(1);
+		const data = fs.readFileSync('servers/' + guild + '.txt', 'utf8')
+		console.log(data)
+		var channel = data;
 
-}
+		a = cronSend(client.channels.get(data));
+
+	} catch (err) {
+
+
+	}
+
+	if (message.content === 'set chair reminder') {
+		logger.info('Post IF');
+		reminderFlag = !reminderFlag;
+		console.log(message.channel.id);
+		abc = chairFunction(message);
+		//var args = message.substring(1).split(' ');
+		//var cmd = args[0];
+		//args = args.splice(1);
+
+	}
 
 
 });
@@ -73,70 +73,70 @@ abc = chairFunction(message);
 
 function chairFunction(message) {
 	logger.info('IN Function');
-	
+
 	message.channel.send('Ok.');
-	
-    if (reminderFlag == true) {
-		
-		
+
+	if (reminderFlag == true) {
+
+
 		deleteFile(message.guild.id);
 		saveStaticDataToFile(message.guild.id, message.channel.id);
 		a = cronSend(message.channel);
 	}
-   
-if (reminderFlag == false) {
-	task.stop();
-	message.channel.send('Stopped.');
-	deleteFile(message.guild.id);
-}
 
-return 1;
+	if (reminderFlag == false) {
+		task.stop();
+		message.channel.send('Stopped.');
+		deleteFile(message.guild.id);
+	}
+
+	return 1;
 
 }
 
 
 function cronSend(channel) {
 	channel.send('Starting.');
-		task = cron.schedule("*/5 * * * *", () => {
+	task = cron.schedule("*/5 * * * *", () => {
 
-channel.send('sentate bien mostro' , {
- tts: true
-});
-})
+		channel.send('sentate bien mostro', {
+			tts: true
+		});
+	})
 
-return 1;
+	return 1;
 }
 
 
 function saveStaticDataToFile(guild, channel) {
-	
-	
+
+
 	var fs = require('fs');
-fs.writeFile('servers/'+ guild +'.txt', channel, function(err) {
-    if (err) {
- 
-    }
-});
-	
+	fs.writeFile('servers/' + guild + '.txt', channel, function (err) {
+		if (err) {
+
+		}
+	});
+
 }
 
 
-function deleteFile(guild){
-	
+function deleteFile(guild) {
+
 	try {
-	
-	var fs = require('fs');
- 
 
-// delete file named 'sample.txt'
-fs.unlink('servers/'+ guild +'.txt', function (err) {
+		var fs = require('fs');
 
-}); 
 
-} catch (err) {
-	
-}
-	
+		// delete file named 'sample.txt'
+		fs.unlink('servers/' + guild + '.txt', function (err) {
+
+		});
+
+	} catch (err) {
+
+	}
+
 }
 
 
