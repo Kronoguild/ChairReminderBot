@@ -6,7 +6,25 @@
   "author": "Kronoguild",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^12.3.1",
     "node-cron": "^2.0.3",
     "winston": "^3.3.3"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kronoguild/ChairReminderBot.git"
+  },
+  "keywords": [
+    "discord",
+    "chair"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kronoguild/ChairReminderBot/issues"
+  },
+  "homepage": "https://github.com/Kronoguild/ChairReminderBot#readme"
 }

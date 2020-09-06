@@ -1,5 +1,6 @@
+const Discord = require("discord.js");
 const cron = require("node-cron");
-var Discord = require('discord.io');
+//var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var reminderFlag = false;
