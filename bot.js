@@ -12,10 +12,17 @@ colorize: true
 });
 logger.level = 'debug';
 // Initialize Discord Bot
-var bot = new Discord.Client({
-token: auth.token,
-autorun: true
-});
+//var bot = new Discord.Client({
+//token: auth.Token,
+//autorun: true
+//});
+
+const bot = new Discord.Client();
+
+bot.login(auth.Token);
+
+
+
 bot.on('ready', function (evt) {
 logger.info('Connected');
 logger.info('Logged in as: ');
@@ -38,7 +45,17 @@ abc = chairFunction();
 
 
 function chairFunction() {
+	
+	bot.sendMessage({
+to: channelID,
+message: 'Ok.'
+});
+	
     if (reminderFlag == true) {
+		bot.sendMessage({
+to: channelID,
+message: 'Starting.'
+});
 		var task = cron.schedule("0 5 * * * *", () => {
   switch(cmd) {
 // !ping
@@ -56,6 +73,10 @@ break;
    
 if (reminderFlag == false) {
 	task.stop();
+	bot.sendMessage({
+to: channelID,
+message: 'Stopped.'
+});
 }
 
 return 1;
