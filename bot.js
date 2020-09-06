@@ -6,8 +6,7 @@ var logger = require('winston');
 var auth = require('./auth.json');
 var reminderFlag = false;
 var task = null;
-let abc = 0;
-let a = 0;
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -46,10 +45,10 @@ bot.on('message', message => {
 
 
 		const data = fs.readFileSync('servers/' + guild + '.txt', 'utf8')
-		console.log(data)
+		
 		var channel = data;
 
-		a = cronSend(client.channels.get(data));
+		cronSend(client.channels.get(data));
 
 	} catch (err) {
 
@@ -59,8 +58,8 @@ bot.on('message', message => {
 	if (message.content === 'set chair reminder') {
 		logger.info('Post IF');
 		reminderFlag = !reminderFlag;
-		console.log(message.channel.id);
-		abc = chairFunction(message);
+		
+		chairFunction(message);
 		//var args = message.substring(1).split(' ');
 		//var cmd = args[0];
 		//args = args.splice(1);
@@ -90,7 +89,6 @@ function chairFunction(message) {
 		deleteFile(message.guild.id);
 	}
 
-	return 1;
 
 }
 
@@ -104,7 +102,7 @@ function cronSend(channel) {
 		});
 	})
 
-	return 1;
+
 }
 
 
