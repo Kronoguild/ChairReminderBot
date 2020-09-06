@@ -4,6 +4,7 @@ const cron = require("node-cron");
 var logger = require('winston');
 var auth = require('./auth.json');
 var reminderFlag = false;
+var task = null;
 let abc = 0
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -52,7 +53,7 @@ function chairFunction(message) {
 	
     if (reminderFlag == true) {
 		message.channel.send('Starting.');
-		var task = cron.schedule("*/5 * * * *", () => {
+		task = cron.schedule("*/5 * * * *", () => {
 
 message.channel.send('sentate bien mostro' , {
  tts: true
