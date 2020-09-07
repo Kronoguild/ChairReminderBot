@@ -6,6 +6,7 @@ var logger = require('winston');
 var auth = require('./auth.json');
 var reminderFlag = false;
 var task = null;
+var data = null;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -36,24 +37,27 @@ bot.on('message', message => {
 	// Nuestro bot necesita saber si ejecutará un
 	// Escuchará los mensajes que empiecen con '¡'
 
-
+if(data == null){
 	guild = message.guild.id;
 
 
 	try {
+		
 		const fs = require('fs')
 
 
-		const data = fs.readFileSync('servers/' + guild + '.txt', 'utf8')
+		data = fs.readFileSync('servers/' + guild + '.txt', 'utf8')
 		
 		var channel = data;
+		
 
-		cronSend(client.channels.get(data));
+		cronSend(bot.channels.cache.find(channel => channel.id === data));
 
 	} catch (err) {
-
+	console.log(err);
 
 	}
+}
 
 	if (message.content === 'set chair reminder') {
 		logger.info('Post IF');
